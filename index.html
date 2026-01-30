@@ -47,12 +47,13 @@
 
         .intro-text {
             font-family: 'Russo One', sans-serif;
-            font-size: 4rem;
+            font-size: clamp(2rem, 8vw, 4rem);
             color: var(--text-light);
             text-transform: uppercase;
             letter-spacing: 5px;
             animation: textZoom 2s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
             text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            padding: 1rem;
         }
 
         @keyframes textZoom {
@@ -72,35 +73,42 @@
 
         .card {
             background: var(--card-bg);
-            padding: 2.5rem;
+            padding: clamp(1.5rem, 5vw, 2.5rem);
             border-radius: 15px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             max-width: 90%;
-            width: 380px;
+            width: clamp(280px, 90%, 380px);
             position: relative;
             z-index: 10;
+            margin: 1rem;
         }
 
         h1 {
             font-family: 'Pacifico', cursive;
             color: #2c3e50;
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
             margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: clamp(1.2rem, 5vw, 2rem);
+            margin: 0.5rem 0;
         }
 
         p {
             color: #555;
             line-height: 1.6;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
         }
 
         /* Input Styling */
         input {
             width: 80%;
-            padding: 15px;
+            padding: clamp(10px, 3vw, 15px);
             margin: 15px 0;
             border: 2px solid #ddd;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 4vw, 1.1rem);
             text-align: center;
             background: #f8f9fa;
             font-weight: bold;
@@ -108,19 +116,14 @@
             transition: 0.3s;
         }
 
-        input:focus {
-            border-color: var(--primary-color);
-            background: #fff;
-        }
-
         button {
             width: 90%;
-            padding: 15px;
+            padding: clamp(10px, 3vw, 15px);
             background: var(--primary-color);
             color: white;
             border: none;
             border-radius: 8px;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
@@ -131,6 +134,11 @@
 
         button:active {
             transform: scale(0.98);
+        }
+
+        input:focus {
+            border-color: var(--primary-color);
+            background: #fff;
         }
 
         /* Surprise Section */
