@@ -9,10 +9,9 @@
     
     <style>
         :root {
-            /* MASCULINE THEME COLORS */
             --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             --card-bg: rgba(255, 255, 255, 0.95);
-            --primary-color: #007bff; /* Electric Blue */
+            --primary-color: #007bff;
             --text-main: #1a1a1a;
             --text-light: #f5f6fa;
         }
@@ -30,7 +29,6 @@
             text-align: center;
         }
 
-        /* --- STAGE 1: INTRO NAME ANIMATION --- */
        #intro-screen {
             position: fixed;
             top: 0;
@@ -62,9 +60,8 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* --- STAGE 2: MAIN CARD --- */
         #app-container {
-            opacity: 0; /* Hidden initially */
+            opacity: 0;
             transition: opacity 1s ease-in;
             width: 100%;
             display: flex;
@@ -101,7 +98,6 @@
             font-size: clamp(0.9rem, 3.5vw, 1.1rem);
         }
 
-        /* Input Styling */
         input {
             width: 80%;
             padding: clamp(10px, 3vw, 15px);
@@ -141,7 +137,6 @@
             background: #fff;
         }
 
-        /* Surprise Section */
         .surprise-content {
             display: none;
             animation: slideUp 0.6s ease-out;
@@ -162,7 +157,6 @@
             transition: opacity 0.3s;
         }
 
-        /* Animations */
         @keyframes slideUp {
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
@@ -175,7 +169,6 @@
             75% { transform: translateX(10px); }
         }
 
-        /* Balloon Decoration (Blue & Gold) */
         .balloon {
             position: absolute;
             bottom: -100px;
@@ -201,7 +194,7 @@
 
 
     <div id="intro-screen">
-        <div class="intro-text" id="nameDisplay">Happy Birthday Ansh</div>
+        <div class="intro-text" id="nameDisplay">Happy Birthday [Name]</div>
     </div>
 
     <div class="balloon"></div>
@@ -231,24 +224,18 @@
     </div>
 
     <script>
-        // --- CUSTOMIZE THESE 3 THINGS ---
-        const FRIEND_NAME = "Happy Birthday Ansh"; // Name shown in animation
-        const SECRET_CODE = "SKY DIVING";   // Code to unlock
-        // -------------------------------
+        const FRIEND_NAME = "Happy Birthday [Name]";
+        const SECRET_CODE = "CODE";
 
-        // Set the name in the HTML automatically
         document.getElementById('nameDisplay').innerText = FRIEND_NAME;
 
-        // 1. Handle Intro Animation Timeline
         window.onload = function() {
             setTimeout(() => {
                 const intro = document.getElementById('intro-screen');
                 const app = document.getElementById('app-container');
                 
-                // Fade out intro
                 intro.style.opacity = '0';
                 
-                // Remove intro from flow and show app
                 setTimeout(() => {
                     intro.style.display = 'none';
                     app.style.opacity = '1';
@@ -256,7 +243,6 @@
             }, 3000); 
         };
 
-        // 2. Check Password Logic
         function checkCode() {
             const input = document.getElementById('passcode');
             const enteredCode = input.value.toUpperCase().trim();
@@ -266,28 +252,24 @@
             const card = document.getElementById('mainCard');
 
             if (enteredCode === SECRET_CODE) {
-                // Success
+
                 lockScreen.style.display = 'none';
                 surprise.style.display = 'block';
                 
-                // Fire confetti immediately
                 fireConfetti();
-                // Fire more every 2 seconds (infinite loop)
+
                 setInterval(fireConfetti, 2000);
                 
             } else {
-                // Fail
                 errorMsg.style.opacity = '1';
                 card.classList.add('shake');
                 setTimeout(() => card.classList.remove('shake'), 300);
             }
         }
 
-        // 3. Optimized Confetti (Short Burst)
         function fireConfetti() {
             const colors = ['#007bff', '#f1c40f', '#ffffff'];
             
-            // Burst from Left
             confetti({
                 particleCount: 60,
                 angle: 60,
@@ -297,7 +279,6 @@
                 zIndex: 999
             });
             
-            // Burst from Right
             confetti({
                 particleCount: 60,
                 angle: 120,
@@ -308,7 +289,6 @@
             });
         }
 
-        // Allow 'Enter' key
         document.getElementById("passcode").addEventListener("keypress", function(event) {
             if (event.key === "Enter") checkCode();
         });
